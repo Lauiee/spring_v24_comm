@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en  ">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -161,11 +161,17 @@
     <a href="/login" style="float: right; font-size: 14px;">로그인/회원가입</a>
     <!-- 필요한 만큼 네비게이션 바 항목을 추가하세요 -->
 </nav>
-
-<section>
-    <h2>최신 글 목록</h2>
-    <!-- 여기에 최신 글 목록이나 게시물 리스트를 나타내는 내용을 추가하세요 -->
-</section>
+<form action="/discussion/save" method="get">
+    <button>게시글 작성</button>
+</form>
+<table>
+    <tr>
+        <th>게시글 목록</th>
+    </tr>
+    <tr th:each="post: ${postList}">
+        <td><a th:href="@{/discussion/{postId}(postId=${post.id})}" th:text="${post.Title}"></a></td>
+    </tr>
+</table>
 
 <footer>
     <p>&copy; 2024 컴투스 프로야구 V24 커뮤니티</p>
