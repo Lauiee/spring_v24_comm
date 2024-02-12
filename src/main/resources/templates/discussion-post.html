@@ -166,14 +166,15 @@
         <th>게시글</th>
     </tr>
     <tr >
-        <td th:text="${post.id}"></td>
-        <th th:text="${post.Title}"></th>
-        <th th:text="${post.Content}"></th>
+        <td th:text="${post.Title}"></td>
+
+        <td th:text="${post.Content}"></td>
 
     </tr>
 </table>
 <button onclick="deleteReq()">삭제</button>
 <button onclick="updateReq()">수정</button>
+<button onclick="returnReq()">목록</button>
 
 <footer>
     <p>&copy; 2024 컴투스 프로야구 V24 커뮤니티</p>
@@ -189,6 +190,10 @@
         console.log("수정 요청");
         const id = [[${post.id}]];
         location.href = "/discussion/edit/" + id;
+    }
+    const returnReq = () => {
+        console.log("복귀 요청");
+        location.href = "/discussion";
     }
 </script>
 </html>

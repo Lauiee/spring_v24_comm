@@ -1,18 +1,18 @@
-package comm.v24comm.service;
+package comm.v24comm.web.service;
 
 import comm.PostUpdateDto;
 import comm.v24comm.domain.Post;
-import comm.v24comm.repository.PostRepository;
+import comm.v24comm.web.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j
+@Transactional
 @RequiredArgsConstructor
 public class PostService {
 

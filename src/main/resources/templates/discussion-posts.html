@@ -5,102 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>컴투스 프로야구 V24 커뮤니티</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em;
-        }
-
-        nav {
-            background-color: #1a1a1a;
-            overflow: hidden;
-            padding: 1em;
-        }
-
-        nav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 40px;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            background-color: #333;
-        }
-
-        /* 드롭다운 스타일 */
-        .dropdown {
-            float: left;
-            overflow: hidden;
-        }
-
-        .dropdown .dropbtn {
-            font-size: 16px;
-            border: none;
-            outline: none;
-            color: white;
-            padding: 14px 40px;
-            background-color: inherit;
-            font-family: inherit;
-            margin: 0;
-
-        }
-
-        .nav-content {
-            display: none;
-            position: absolute;
-            background-color: #1a1a1a;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .nav-content a {
-            float: none;
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-        }
-
-        .nav-content a:hover {
-            background-color: #333;
-
-
-        }
-
-        /* 추가적인 스타일 및 레이아웃은 필요에 따라 수정하십시오 */
-
-        section {
-            margin: 20px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -114,6 +19,101 @@
             );
         });
     </script>
+    <style>
+        /* Reset CSS */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    /* Header Styles */
+    header {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1em;
+    }
+
+    /* Navigation Styles */
+    nav {
+        background-color: #1a1a1a;
+        overflow: hidden;
+        padding: 1em;
+    }
+
+    nav a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 40px;
+        text-decoration: none;
+    }
+
+    nav a:hover {
+        background-color: #333;
+    }
+
+    .dropdown {
+        float: left;
+        overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 40px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+    }
+
+    .nav-content {
+        display: none;
+        position: absolute;
+        background-color: #1a1a1a;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .nav-content a {
+        float: none;
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+    }
+
+    .nav-content a:hover {
+        background-color: #333;
+    }
+
+    /* Section Styles */
+    section {
+        margin: 20px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Footer Styles */
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1em;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    </style>
 </head>
 <body>
 <header>

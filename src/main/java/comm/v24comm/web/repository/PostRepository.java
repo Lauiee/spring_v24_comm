@@ -1,4 +1,4 @@
-package comm.v24comm.repository;
+package comm.v24comm.web.repository;
 
 import comm.v24comm.domain.Post;
 import org.springframework.data.jpa.repository.JpaRepository;

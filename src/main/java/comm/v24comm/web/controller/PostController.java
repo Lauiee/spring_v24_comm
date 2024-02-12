@@ -1,12 +1,11 @@
-package comm.v24comm.controller;
+package comm.v24comm.web.controller;
 
 import comm.PostUpdateDto;
 import comm.v24comm.domain.Post;
-import comm.v24comm.service.PostService;
+import comm.v24comm.web.service.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +26,7 @@ public class PostController {
         return "discussion-posts"; // 게시판 글 조회
     }
 
-    @Transactional
+
     @GetMapping("/{postId}") // 상세 게시글 조회
     public String findById(@PathVariable("postId") Long postId, Model model){
         Post findPost = postService.getPost(postId);
@@ -48,15 +47,13 @@ public class PostController {
         System.out.println("Received postId: " + postId); // postId 출력
         Post findPost = postService.getPost(postId);
         model.addAttribute("findPost", findPost);
-
         return "discussion-editForm";
     }
 
-    @Transactional
     @PostMapping("/edit/{postId}") // 게시글 수정
     public String editPost(@PathVariable("postId") Long postId, @ModelAttribute("findPost") PostUpdateDto findPost){
-        System.out.println("제목:"+findPost.getTitle());
-        System.out.println("내용:"+findPost.getContent());
+        log.info("제목:"+findPost.getTitle());
+        log.info("내용:"+findPost.getContent());
         postService.updatePost(postId, findPost);
         Post updated = postService.getPost(postId);
         log.info("변경 게시글 id: "+updated.getId());
