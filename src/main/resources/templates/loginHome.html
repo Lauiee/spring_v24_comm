@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컴투스 프로야구 V24 커뮤니티</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $(this).children(".nav-content").slideDown("fast");
+                },
+                function () {
+                    $(this).children(".nav-content").slideUp("fast");
+                }
+            );
+        });
+    </script>
+</head>
+<body>
+<header>
+    <h1>컴투스 프로야구 V24 커뮤니티</h1>
+</header>
+
+<nav th:fragment="navbar" >
+    <a href="/">홈</a>
+
+    <div class="dropdown">
+        <button class="dropbtn">자유 게시판</button>
+        <div class="nav-content">
+            <a href="/discussion">토론장</a>
+            <a href="#rants">투기장</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">공략</button>
+        <div class="nav-content">
+            <a href="#generalStrategy">공통 공략</a>
+            <div class="dropdown">
+                <button class="dropbtn">팀별 공략</button>
+                <div class="nav-content">
+                    <a href="#kia">기아 타이거즈</a>
+                    <a href="#ssg">삼성 라이온즈</a>
+                    <a href="#ssg">SSG 랜더스</a>
+                    <a href="#ssg">롯데 자이언츠</a>
+                    <a href="#ssg">키움 히어로즈</a>
+                    <a href="#ssg">NC 다이노스</a>
+                    <a href="#ssg">KT 위즈</a>
+                    <a href="#ssg">두산 베어스</a>
+                    <a href="#ssg">LG 트윈스</a>
+                    <a href="#ssg">한화 이글스</a>
+
+                    <!-- 다른 팀들에 대한 항목도 추가하세요 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="/questions">질문</a>
+    <a href="/brags">자랑</a>
+    <a href="/clubPromotion">클럽 홍보</a>
+    <a style="float: right; font-size: 14px;">
+        <div class="col">
+            <form th:action="@{/login/logout}" method="post">
+                <button class="w-100 btn btn-dark btn-lg" type="submit">
+                    로그아웃
+                </button>
+            </form>
+        </div>
+    </a>
+    <a th:text="|사용자: ${member.name}|" style="float: right; font-size: 14px;"></a>
+
+    <!-- 필요한 만큼 네비게이션 바 항목을 추가하세요 -->
+</nav>
+
+<section>
+    <h2>최신 글 목록</h2>
+    <!-- 여기에 최신 글 목록이나 게시물 리스트를 나타내는 내용을 추가하세요 -->
+</section>
+
+<footer>
+    <p>&copy; 2024 컴투스 프로야구 V24 커뮤니티</p>
+</footer>
+</body>
+</html>
