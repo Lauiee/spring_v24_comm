@@ -159,8 +159,21 @@
     <a href="/questions">질문</a>
     <a href="/brags">자랑</a>
     <a href="/clubPromotion">클럽 홍보</a>
-    <a href="/login" style="float: right; font-size: 14px;">로그인/회원가입</a>
-    <!-- 필요한 만큼 네비게이션 바 항목을 추가하세요 -->
+    <div th:if="${member == null}">
+        <a href="/login" style="float: right; font-size: 14px;">로그인/회원가입</a>
+    </div>
+    <div th:if="${member != null}">
+        <a style="float: right; font-size: 14px;">
+            <div class="col">
+                <form th:action="@{/login/logout}" method="post">
+                    <button class="w-100 btn btn-dark btn-lg" type="submit">
+                        로그아웃
+                    </button>
+                </form>
+            </div>
+        </a>
+        <a href="/myPage" th:text="|사용자: ${member.name}|" style="float: right; font-size: 14px;"></a>
+    </div>    <!-- 필요한 만큼 네비게이션 바 항목을 추가하세요 -->
 </nav>
 
 <!-- discussion-editForm.html -->

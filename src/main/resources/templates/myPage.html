@@ -78,8 +78,9 @@
 </nav>
 
 <section>
-    <h2>최신 글 목록</h2>
-    <!-- 여기에 최신 글 목록이나 게시물 리스트를 나타내는 내용을 추가하세요 -->
+    <h2>사용자 정보</h2>
+    <p th:text="|사용자: ${member.name}|"></p>
+    <p th:text="|Id: ${member.loginId}|"></p>
 </section>
 
 <footer>

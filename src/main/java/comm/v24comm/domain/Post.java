@@ -16,9 +16,10 @@ public class Post {
 
     private String title; // 게시물 제목
     private String content; // 게시물 내용
-
-    public Post(String title, String content) {
+    private String writer; // 작성자
+    public Post(String title, String content, String writer) {
         this.title = title;
         this.content = content;
+        this.writer = writer;
     }
 }

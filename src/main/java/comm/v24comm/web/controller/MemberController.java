@@ -12,11 +12,9 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,7 +25,8 @@ public class MemberController {
     private final MemberService memberService;
 
     @GetMapping // 로그인 화면
-    public String loginForm() {
+    public String loginForm(Model model) {
+        model.addAttribute("loginForm", new LoginDto());
         return "/members/loginForm";
     }
 
@@ -46,19 +45,19 @@ public class MemberController {
 
         memberService.save(newMember);
 
-        return "/members/loginForm";
+        return "redirect:/login";
     }
 
     @PostMapping // 로그인
-    public String login(@Valid @ModelAttribute("form") LoginDto form, BindingResult
-            bindingResult, HttpServletRequest request) {
+    public String login(@Valid @ModelAttribute("loginForm") LoginDto loginForm, BindingResult bindingResult,
+                        @RequestParam(name="redirectURL",defaultValue = "/") String redirectURL,
+                        HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
             return "/members/loginForm";
         }
-        Member loginMember = memberService.login(form.getLoginId(),
-                form.getPassword());
+        Member loginMember = memberService.login(loginForm.getLoginId(),
+                loginForm.getPassword());
         log.info("login? {}", loginMember);
-
         if (loginMember == null) {
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
             return "/members/loginForm";
@@ -69,7 +68,9 @@ public class MemberController {
         HttpSession session = request.getSession();
         //세션에 로그인 회원 정보 보관
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
-        return "redirect:/";
+        log.info("redirectURL= ", redirectURL);
+        //redirectURL 적용
+        return "redirect:" + redirectURL;
     }
 
     @PostMapping("/logout")
