@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>컴투스 프로야구 V24 커뮤니티</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -116,7 +116,6 @@
     </style>
 </head>
 <body>
-
 <header>
     <h1>컴투스 프로야구 V24 커뮤니티</h1>
 </header>
@@ -135,7 +134,7 @@
     <div class="dropdown">
         <button class="dropbtn">공략</button>
         <div class="nav-content">
-            <a href="#generalStrategy">공통 공략</a>
+            <a href="/tip">공통 공략</a>
             <div class="dropdown">
                 <button class="dropbtn">팀별 공략</button>
                 <div class="nav-content">
@@ -173,19 +172,27 @@
             </div>
         </a>
         <a href="/myPage" th:text="|사용자: ${member.name}|" style="float: right; font-size: 14px;"></a>
-    </div>    <!-- 필요한 만큼 네비게이션 바 항목을 추가하세요 -->
+    </div>
+    <!-- 필요한 만큼 네비게이션 바 항목을 추가하세요 -->
 </nav>
-
-<!-- discussion-editForm.html -->
-<form th:action="@{'/discussion/edit/' + ${findPost.id}}" th:method="post" th:object="${findPost}">
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" th:field="${findPost.title}" required>
-
-    <label for="content">Content:</label>
-    <textarea id="content" name="content" th:field="*{content}" required></textarea>
-
-    <button type="submit">수정 완료</button>
+<form action="/discussion/save" method="get">
+    <button>게시글 작성</button>
 </form>
+<table>
+    <tr>
+        <th>게시글 목록</th>
+    </tr>
+    <tr th:each="post: ${postList}">
+        <td>
+            <a th:href="@{/discussion/{postId}(postId=${post.id})}">
+                <span th:text="${post.writer} + ' - ' + ${post.title}"></span>
+            </a>
+        </td>
+    </tr>
+</table>
 
+<footer>
+    <p>&copy; 2024 컴투스 프로야구 V24 커뮤니티</p>
+</footer>
 </body>
 </html>

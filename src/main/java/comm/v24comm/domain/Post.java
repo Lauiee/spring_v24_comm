@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity // jpa가 사용하는 객체
-@Table(name ="v24CommPost")
+@Table(name ="discussion")
 public class Post {
     @Id // 테이블의 pk와 해당 필드 매핑
     @GeneratedValue(strategy = GenerationType.IDENTITY) // jpa가 알아서 pk값 생성

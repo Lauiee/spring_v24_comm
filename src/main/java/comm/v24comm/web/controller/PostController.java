@@ -26,7 +26,7 @@ public class PostController {
         List<Post> postList = postService.findAll();
         model.addAttribute("member", loginMember);
         model.addAttribute("postList", postList);
-        return "discussion-posts"; // 게시판 글 조회
+        return "discussion/discussion-posts"; // 게시판 글 조회
     }
 
 
@@ -40,14 +40,14 @@ public class PostController {
 
         model.addAttribute("member", loginMember);
         model.addAttribute("post", findPost);
-        return "discussion-post";
+        return "discussion/discussion-post";
     }
 
     @GetMapping("/save") // 게시글 작성 버튼 - 게시글 작성 시작
     public String savePostForm(@Login Member loginMember, Model model){
         model.addAttribute("member", loginMember);
         log.info("작성자: ", loginMember.getName());
-        return "save"; // 게시글 작성 폼으로 이동
+        return "discussion/save"; // 게시글 작성 폼으로 이동
     }
 
     @GetMapping("/edit/{postId}") // 게시글 수정 폼
@@ -56,7 +56,7 @@ public class PostController {
         Post findPost = postService.getPost(postId);
         model.addAttribute("member", loginMember);
         model.addAttribute("findPost", findPost);
-        return "discussion-editForm";
+        return "discussion/discussion-editForm";
     }
 
     @PostMapping("/edit/{postId}") // 게시글 수정
